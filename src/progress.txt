@@ -1,0 +1,71 @@
+TODO: 
+#Nav
+[x] HomePage
+[x] ProfilePage
+[x] DetailPage
+[x] Link to Auth page
+[] Welcome page 
+
+
+#Actions
+[x] Filter
+[x] OrderBy
+[x] Like
+[x] Reply
+[] Boost
+  [x] boost button
+  [x] boost count
+  [] boost query & ranking 
+  [?] attach boost to submit #Questions, #Ideas, #Project  
+  => now that TwetchPay is implemented it will be possible to do this
+[] Categorize
+
+#UI
+[x] Overflow
+[x] Fixed AppBar
+[x] Scroll
+[x] Theme
+[o] Shorter Timestamps => Won't Do
+[] Images
+[] Links
+
+
+#UX
+[x] Disable PostAction when logged out
+[x] composer validation
+[] Loading
+  [x] fetch posts
+  [] post and reload page
+[] MUI SnackBar + MUI Alert
+  [x] error when unauthenticated action
+  [] transaction success 
+
+
+#Other
+[] RelayXIntegration
+[] HandCash Integration
+
+
+#Now
+[x] Login with Twetch
+[] TwetchPay Integration
+  [x] MB
+  [] relay => waiting for whitelisting
+  [x] post 
+  [x] like
+  [] 21e8
+  [] Boost
+=> https://codesandbox.io/s/twetchpay-6m86f
+[] Buy orderby earlier and store proof in localStorage
+[?] 21e8 HashBoard
+
+#TODO before going online
+[?] TwetchPay Preview
+[x] Drawer
+[x] Sticky Post Button
+[] Welcome page
+[] Profile page tabs [posts, replies, likes]
+[] Detail Page Layout (link between parent/child)
+
+
+
