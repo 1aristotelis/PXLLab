@@ -88,7 +88,7 @@ export default function TwetchCallback() {
                   cursor: "pointer"
                 }}
               >
-                ZeroSchool
+                PXL Lab
               </div>
             </div>
             <Typography
@@ -115,7 +115,7 @@ export default function TwetchCallback() {
               >
                 Twetch Wallet
               </a>{" "}
-              to ZeroSchool.
+              to PXL Lab.
             </Typography>
             <Typography
               variant="body1"

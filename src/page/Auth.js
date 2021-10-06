@@ -37,7 +37,7 @@ export default function Auth(props) {
     // config
     const host = window.location.host;
     let redirectUrl = `https://${host}/auth/callback/twetch`;
-    let appName = "ZeroSchool";
+    let appName = "PXL Lab";
     e.preventDefault();
     window.location.href = `https://twetch.app/auth/authorize?appName=${appName}&redirectUrl=${redirectUrl}`;
   };
@@ -333,7 +333,7 @@ export default function Auth(props) {
                   textAlign: "center"
                 }}
               >
-                ZeroSchool
+                PXL Lab
               </h1>
             </div>
             <Typography

@@ -34,7 +34,6 @@ export default function Compose(props) {
     }
     return diff;
   };
-  console.log(postData);
 
   return (
     <div
