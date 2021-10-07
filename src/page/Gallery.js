@@ -13,7 +13,7 @@ import { use100vh } from "react-div-100vh";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { getBoosts } from "../api/boost";
-import { FetchPosts } from "../api/TwetchGraph";
+import { FetchPXL } from "../api/TwetchGraph";
 import StickyButton from "../components/StickyButton";
 import Composer from "../components/Composer";
 import AppBar from "../components/AppBar";
@@ -33,8 +33,8 @@ const OrderToIndex = {
   RANKING_DESC: 20
 };
 
-export default function Questions(props) {
-  const filter = "#questions";
+export default function Gallery(props) {
+  const filter = "#pxlpix";
   //console.log(filter);
   const [orderBy, setOrderBy] = useState(indexToOrder[0]);
   //const [filter, setFilter] = useState(props.filter);
@@ -56,7 +56,7 @@ export default function Questions(props) {
   }, [orderBy, filter]);
 
   const fetchMore = () => {
-    FetchPosts(filter, orderBy, offset).then((res) => {
+    FetchPXL(filter, orderBy, offset).then((res) => {
       //console.log(res);
       setTotalCount(res.allPosts.totalCount);
       let data = res.allPosts.edges;
@@ -98,7 +98,7 @@ export default function Questions(props) {
       }}
     >
       <Hidden smDown>
-        <LeftPane currentTab="Questions" />
+        <LeftPane currentTab="PXLPix" />
       </Hidden>
       <div
         style={{
@@ -118,7 +118,7 @@ export default function Questions(props) {
         >
           <div style={{ cursor: "pointer" }} onClick={scrollTop}>
             <Hidden smUp>
-              <AppBar currentTab="Questions" />
+              <AppBar currentTab="PXLPix" />
             </Hidden>
             <Hidden xsDown>
               <div
@@ -140,9 +140,9 @@ export default function Questions(props) {
                     textDecoration: "none",
                     textTransform: "none"
                   }}
-                  onClick={() => history.push("/intents")}
+                  onClick={() => history.push("/gallery")}
                 >
-                  Questions
+                  PXL Pix
                 </Button>
               </div>
             </Hidden>
@@ -175,16 +175,6 @@ export default function Questions(props) {
                 overflowY: "auto"
               }}
             >
-              <Hidden xsDown>
-                <Composer />
-                <div
-                  style={{
-                    width: "100%",
-                    height: "8px",
-                    backgroundColor: "#F2F2F2"
-                  }}
-                />
-              </Hidden>
               <InfiniteScroll
                 dataLength={postList.length}
                 next={fetchMore}
@@ -244,11 +234,7 @@ export default function Questions(props) {
           zIndex: 1002,
           position: "fixed"
         }}
-      >
-        <Hidden smUp>
-          <StickyButton />
-        </Hidden>
-      </div>
+      ></div>
     </div>
   );
 }

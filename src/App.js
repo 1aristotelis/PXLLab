@@ -9,7 +9,7 @@ import Auth from "./page/Auth";
 import Notifications from "./page/Notifications";
 import Compose from "./page/Compose";
 import Home from "./page/Home";
-import Questions from "./page/Questions";
+import Gallery from "./page/Gallery";
 import ArtContests from "./page/ArtContests";
 import Jobs from "./page/Jobs";
 import Features from "./page/Features";
@@ -42,7 +42,7 @@ export default function App() {
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/notifications" component={Notifications} />
         <Route exact path="/" component={Home} />
-        <Route exact path="/intents" component={Questions} />
+        <Route exact path="/gallery" component={Gallery} />
         <Route exact path="/challenges" component={ArtContests} />
         <Route exact path="/projects" component={Projects} />
         <Route exact path="/features" component={Features} />
