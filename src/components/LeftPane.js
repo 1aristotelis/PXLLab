@@ -13,7 +13,7 @@ import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import EmojiObjectsOutlinedIcon from "@material-ui/icons/EmojiObjectsOutlined";
+import PhotoCameraOutlinedIcon from "@material-ui/icons/PhotoCameraOutlined";
 import StarsOutlinedIcon from "@material-ui/icons/StarsOutlined";
 import AddCircleOutlineRoundedIcon from "@material-ui/icons/AddCircleOutlineRounded";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -153,7 +153,7 @@ export default function LeftPane(props) {
                     </Typography>
                   </ListItemText>
                 </ListItem>
-                <ListItem
+                {/* <ListItem
                   button
                   component="a"
                   href="https://twetch.app/chat/home"
@@ -168,7 +168,7 @@ export default function LeftPane(props) {
                       Chat
                     </Typography>
                   </ListItemText>
-                </ListItem>
+                </ListItem> */}
                 <ListItem button component={Link} to="/">
                   <ListItemIcon>
                     <HomeOutlinedIcon color={isSelected("Home")} />
@@ -179,7 +179,7 @@ export default function LeftPane(props) {
                     </Typography>
                   </ListItemText>
                 </ListItem>
-                <ListItem button component={Link} to="/intents">
+                {/* <ListItem button component={Link} to="/intents">
                   <ListItemIcon>
                     <HelpOutlineOutlinedIcon color={isSelected("Questions")} />
                   </ListItemIcon>
@@ -188,18 +188,23 @@ export default function LeftPane(props) {
                       Questions
                     </Typography>
                   </ListItemText>
-                </ListItem>
-                <ListItem button component={Link} to="/methods">
+                </ListItem> */}
+                <ListItem button component={Link} to="/challenges">
                   <ListItemIcon>
-                    <EmojiObjectsOutlinedIcon color={isSelected("Ideas")} />
+                    <PhotoCameraOutlinedIcon
+                      color={isSelected("ArtContests")}
+                    />
                   </ListItemIcon>
                   <ListItemText>
-                    <Typography variant="body1" color={isSelected("Ideas")}>
-                      Ideas
+                    <Typography
+                      variant="body1"
+                      color={isSelected("ArtContests")}
+                    >
+                      PXL Art Contest
                     </Typography>
                   </ListItemText>
                 </ListItem>
-                <ListItem button component={Link} to="/projects">
+                {/* <ListItem button component={Link} to="/projects">
                   <ListItemIcon>
                     <StarsOutlinedIcon color={isSelected("Projects")} />
                   </ListItemIcon>
@@ -218,7 +223,7 @@ export default function LeftPane(props) {
                       Jobs
                     </Typography>
                   </ListItemText>
-                </ListItem>
+                </ListItem> */}
                 <ListItem button component={Link} to="/features">
                   <ListItemIcon>
                     <LockOutlinedIcon color={isSelected("Features")} />
