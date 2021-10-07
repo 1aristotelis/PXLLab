@@ -32,8 +32,8 @@ const OrderToIndex = {
   RANKING_DESC: 20
 };
 
-export default function Ideas(props) {
-  const filter = "#ideas";
+export default function ArtContest(props) {
+  const filter = "#PXLArtContest";
   //console.log(filter);
   const [orderBy, setOrderBy] = useState(indexToOrder[0]);
   //const [filter, setFilter] = useState(props.filter);
@@ -97,7 +97,7 @@ export default function Ideas(props) {
       }}
     >
       <Hidden smDown>
-        <LeftPane currentTab="Ideas" />
+        <LeftPane currentTab="ArtContests" />
       </Hidden>
       <div
         style={{
@@ -117,7 +117,7 @@ export default function Ideas(props) {
         >
           <div style={{ cursor: "pointer" }} onClick={scrollTop}>
             <Hidden smUp>
-              <AppBar currentTab="Ideas" />
+              <AppBar currentTab="ArtContests" />
             </Hidden>
             <Hidden xsDown>
               <div
@@ -139,9 +139,9 @@ export default function Ideas(props) {
                     textDecoration: "none",
                     textTransform: "none"
                   }}
-                  onClick={() => history.push("/methods")}
+                  onClick={() => history.push("/challenges")}
                 >
-                  Ideas
+                  PXL Art Contest
                 </Button>
               </div>
             </Hidden>

@@ -10,7 +10,7 @@ import Notifications from "./page/Notifications";
 import Compose from "./page/Compose";
 import Home from "./page/Home";
 import Questions from "./page/Questions";
-import Ideas from "./page/Ideas";
+import ArtContests from "./page/ArtContests";
 import Jobs from "./page/Jobs";
 import Features from "./page/Features";
 import Projects from "./page/Projects";
@@ -43,7 +43,7 @@ export default function App() {
         <Route exact path="/notifications" component={Notifications} />
         <Route exact path="/" component={Home} />
         <Route exact path="/intents" component={Questions} />
-        <Route exact path="/methods" component={Ideas} />
+        <Route exact path="/challenges" component={ArtContests} />
         <Route exact path="/projects" component={Projects} />
         <Route exact path="/features" component={Features} />
         <Route exact path="/jobs" component={Jobs} />
