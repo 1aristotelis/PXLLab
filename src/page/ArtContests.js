@@ -36,7 +36,6 @@ const OrderToIndex = {
 export default function ArtContest(props) {
   const filter = "#PXLArtContest";
   //console.log(filter);
-  const [orderBy, setOrderBy] = useState(indexToOrder[0]);
   //const [filter, setFilter] = useState(props.filter);
   const [activeContest, setActiveContest] = useState({});
   const [completeContest0, setCompleteContest0] = useState({});
