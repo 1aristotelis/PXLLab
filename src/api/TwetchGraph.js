@@ -140,6 +140,20 @@ export function FetchPosts(filter, order, offset) {
   }`);
 }
 
+export function FetchPXL(filter, order, offset) {
+  //console.log(filter);
+  return twquery(`{
+    allPosts(orderBy: ${order} first: 30 offset: ${offset} filter: {bContent: {includes: "${filter}"}, files: {isNull: false}}) {
+      totalCount
+      edges {
+        node {
+          ...${PostFields}
+        }
+      }
+    }
+  }`);
+}
+
 export function FetchHome(ticker, order, offset) {
   //console.log(filter);
   return twquery(`{

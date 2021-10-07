@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
+import ImageOutlinedIcon from "@material-ui/icons/ImageOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import PhotoCameraOutlinedIcon from "@material-ui/icons/PhotoCameraOutlined";
 import StarsOutlinedIcon from "@material-ui/icons/StarsOutlined";
@@ -179,16 +179,16 @@ export default function LeftPane(props) {
                     </Typography>
                   </ListItemText>
                 </ListItem>
-                {/* <ListItem button component={Link} to="/intents">
+                <ListItem button component={Link} to="/gallery">
                   <ListItemIcon>
-                    <HelpOutlineOutlinedIcon color={isSelected("Questions")} />
+                    <ImageOutlinedIcon color={isSelected("PXLPix")} />
                   </ListItemIcon>
                   <ListItemText>
-                    <Typography variant="body1" color={isSelected("Questions")}>
-                      Questions
+                    <Typography variant="body1" color={isSelected("PXLPix")}>
+                      PXL Pix
                     </Typography>
                   </ListItemText>
-                </ListItem> */}
+                </ListItem>
                 <ListItem button component={Link} to="/challenges">
                   <ListItemIcon>
                     <PhotoCameraOutlinedIcon
