@@ -12,7 +12,6 @@ import {
 import { use100vh } from "react-div-100vh";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import { getBoosts } from "../api/boost";
 import { FetchPostDetail } from "../api/TwetchGraph";
 import StickyButton from "../components/StickyButton";
 import Composer from "../components/Composer";
