@@ -6,13 +6,14 @@ import {
   FormControl,
   Hidden,
   MenuItem,
-  Select
+  Select,
+  Typography
 } from "@material-ui/core";
 import { use100vh } from "react-div-100vh";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { getBoosts } from "../api/boost";
-import { FetchPosts } from "../api/TwetchGraph";
+import { FetchPostDetail } from "../api/TwetchGraph";
 import StickyButton from "../components/StickyButton";
 import Composer from "../components/Composer";
 import AppBar from "../components/AppBar";
@@ -37,7 +38,8 @@ export default function ArtContest(props) {
   //console.log(filter);
   const [orderBy, setOrderBy] = useState(indexToOrder[0]);
   //const [filter, setFilter] = useState(props.filter);
-  const [postList, setPostList] = useState([]);
+  const [activeContest, setActiveContest] = useState({});
+  const [completeContest0, setCompleteContest0] = useState({});
   const [offset, setOffset] = useState(0);
   const [boosts, setBoosts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -47,43 +49,23 @@ export default function ArtContest(props) {
   const height = use100vh();
   const containerHeight = height ? height : "100vh";
 
+  //Soon
+  const txActive = "";
+
+  const txComplete0 =
+    "5c695b5b987f0732bea38bf9b09bd2f6d841e565f84ec87b188cd2b46776ead5";
   useEffect(() => {
     setLoading(true);
-    fetchMore();
+    /* FetchPostDetail(txActive).then((data) => {
+      setActiveContest(data.allPosts.edges);
+    }); */
+    FetchPostDetail(txComplete0).then((data) => {
+      //console.log(data);
+      setCompleteContest0(data.allPosts.edges[0]);
+    });
     setLoading(false);
     //getBoosts().then((res) => setBoosts(res));
-  }, [orderBy, filter]);
-
-  const fetchMore = () => {
-    FetchPosts(filter, orderBy, offset).then((res) => {
-      //console.log(res);
-      setTotalCount(res.allPosts.totalCount);
-      let data = res.allPosts.edges;
-      setPostList(postList.concat(data));
-      if (totalCount !== 0 && postList.length >= totalCount) {
-        setHasMore(false);
-      }
-
-      setOffset(offset + 30);
-    });
-  };
-
-  const handleChangeOrder = (event) => {
-    setPostList([]);
-    setTotalCount(0);
-    setHasMore(true);
-    setOrderBy(indexToOrder[event.target.value]);
-    setOffset(0);
-  };
-
-  const getDiff = (tx) => {
-    let diff = 0;
-    let found = boosts.find((x) => x.tx === tx);
-    if (found) {
-      diff = found.diff;
-    }
-    return diff;
-  };
+  }, [txActive, txComplete0]);
 
   const scrollTop = (e) => {
     document.getElementById("scrollable").scrollTo(0, 0);
@@ -145,81 +127,8 @@ export default function ArtContest(props) {
                 </Button>
               </div>
             </Hidden>
-            <FormControl
-              style={{
-                width: "100%",
-                borderBottom: "1px solid #F2F2F2"
-              }}
-            >
-              <Select
-                variant="standard"
-                style={{ paddingLeft: "16px" }}
-                disableUnderline
-                value={OrderToIndex[orderBy]}
-                onChange={handleChangeOrder}
-              >
-                <MenuItem value={0}>Latest</MenuItem>
-                <MenuItem value={10}>Oldest</MenuItem>
-                <MenuItem value={20}>Economy</MenuItem>
-              </Select>
-            </FormControl>
           </div>
-
-          {!loading ? (
-            <div
-              id="scrollable"
-              style={{
-                position: "relative",
-                height: `calc(${containerHeight}px - 114px)`,
-                overflowY: "auto"
-              }}
-            >
-              <Hidden xsDown>
-                <Composer />
-                <div
-                  style={{
-                    width: "100%",
-                    height: "8px",
-                    backgroundColor: "#F2F2F2"
-                  }}
-                />
-              </Hidden>
-              <InfiniteScroll
-                dataLength={postList.length}
-                next={fetchMore}
-                hasMore={hasMore}
-                scrollableTarget="scrollable"
-                loader={
-                  <div
-                    style={{
-                      display: "flex",
-                      marginTop: "16px",
-                      justifyContent: "center",
-                      overflow: "hidden"
-                    }}
-                  >
-                    <CircularProgress />
-                  </div>
-                }
-                endMessage={
-                  <p style={{ textAlign: "center" }}>
-                    <b>Yay, you've seen it all!</b>
-                  </p>
-                }
-              >
-                {postList.map((post) => {
-                  return (
-                    <Post
-                      {...post}
-                      boostDiff={getDiff(post.node.transaction)}
-                      key={post.node.transaction}
-                      tx={post.node.transaction}
-                    />
-                  );
-                })}
-              </InfiniteScroll>
-            </div>
-          ) : (
+          {loading ? (
             <div
               style={{
                 display: "flex",
@@ -230,24 +139,61 @@ export default function ArtContest(props) {
             >
               <CircularProgress />
             </div>
+          ) : (
+            <div
+              id="scrollable"
+              style={{
+                position: "relative",
+                height: `calc(${containerHeight}px - 114px)`,
+                overflowY: "auto"
+              }}
+            >
+              <Typography
+                variant="body1"
+                style={{
+                  color: "#000000",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  lineHeight: "36px",
+                  borderBottom: "1px solid #000000",
+                  marginBottom: "12px"
+                }}
+              >
+                Active(s)
+              </Typography>
+              {/* <Post {...activeContest} tx={txActive} /> */}
+              <Typography variant="h6" style={{ textAlign: "center" }}>
+                Soon™
+              </Typography>
+              <Typography
+                variant="body1"
+                style={{
+                  color: "#000000",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  lineHeight: "36px",
+                  borderBottom: "1px solid #000000",
+                  marginBottom: "12px"
+                }}
+              >
+                Completed
+              </Typography>
+
+              {completeContest0.node && (
+                <div style={{ opacity: 0.69 }}>
+                  <Post
+                    {...completeContest0}
+                    tx={completeContest0.node.transaction}
+                  />
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>
       <Hidden mdDown>
         <RightPane />
       </Hidden>
-      <div
-        style={{
-          width: "100%",
-          bottom: 0,
-          zIndex: 1002,
-          position: "fixed"
-        }}
-      >
-        <Hidden smUp>
-          <StickyButton />
-        </Hidden>
-      </div>
     </div>
   );
 }
