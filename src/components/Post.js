@@ -28,8 +28,17 @@ export default function Post(props) {
     return (
       <div>
         {branchedById && (
-          <div style={{ marginTop: "4px", marginLeft: "8px" }}>
-            <Link to={`/u/${branchedById}`}>
+          <div
+            style={{
+              marginTop: "4px",
+              marginLeft: "8px",
+              marginBottom: "-15px"
+            }}
+          >
+            <Link
+              to={`/u/${branchedById}`}
+              onClick={(e) => e.stopPropagation()}
+            >
               <BranchIcon
                 style={{
                   width: "18px",

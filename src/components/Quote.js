@@ -45,7 +45,7 @@ export default function Quote(props) {
             borderRadius: "4px 4px 0 0"
           }}
         >
-          <Link to={postData.userId}>
+          <Link to={postData.userId} onClick={(e) => e.stopPropagation()}>
             <Avatar
               src={postData.userByUserId.icon}
               style={{
@@ -58,6 +58,7 @@ export default function Quote(props) {
           <div style={{ flexGrow: 1, width: "100%", display: "inline-block" }}>
             <Link
               to={`/u/${postData.userId}`}
+              onClick={(e) => e.stopPropagation()}
               style={{
                 lineHeight: "24px",
                 color: "#000000",
