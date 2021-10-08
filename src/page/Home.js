@@ -19,6 +19,8 @@ import LeftPane from "../components/LeftPane";
 import RightPane from "../components/RightPane";
 import Post from "../components/Post";
 import StickyButton from "../components/StickyButton";
+import BranchedPost from "../components/BranchedPost";
+import QuotedPost from "../components/QuotedPost";
 
 const indexToOrder = {
   0: "CREATED_AT_DESC",
@@ -210,14 +212,27 @@ export default function Home(props) {
                 }
               >
                 {postList.map((post, index) => {
-                  return (
-                    <Post
-                      {...post}
-                      boostDiff={getDiff(post.node.transaction)}
-                      key={index}
-                      tx={post.node.transaction}
-                    />
-                  );
+                  let type = post.node.type;
+                  if (type === "post") {
+                    return (
+                      <Post
+                        {...post}
+                        boostDiff={getDiff(post.node.transaction)}
+                        key={index}
+                        tx={post.node.transaction}
+                      />
+                    );
+                  } else {
+                    if (type === "branch") {
+                      return (
+                        <BranchedPost {...post} tx={post.node.transaction} />
+                      );
+                    } else {
+                      return (
+                        <QuotedPost {...post} tx={post.node.transaction} />
+                      );
+                    }
+                  }
                 })}
               </InfiniteScroll>
             </div>

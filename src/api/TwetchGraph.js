@@ -13,13 +13,16 @@ export const twquery = async (q) => {
 
 const PostFields = `{
   bContent
+  bContentType
   createdAt
+  files
   id
   numLikes
   postsByReplyPostId {
     totalCount
   }
   transaction
+  type
   youLikedCalc
   userId
   userByUserId {

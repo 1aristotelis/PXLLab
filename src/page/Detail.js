@@ -16,6 +16,8 @@ import LeftPane from "../components/LeftPane";
 import RightPane from "../components/RightPane";
 import AppBar from "../components/AppBar";
 import Post from "../components/Post";
+import BranchedPost from "../components/BranchedPost";
+import QuotedPost from "../components/QuotedPost";
 
 const indexToOrder = {
   0: "CREATED_AT_DESC",
@@ -172,14 +174,29 @@ export default function Detail(props) {
                     </Select>
                   </FormControl>
                 )}
-                {children.map((child) => (
-                  <Post
-                    {...child}
-                    boostDiff={0}
-                    key={child.node.transaction}
-                    tx={child.node.transaction}
-                  />
-                ))}
+                {children.map((post, index) => {
+                  let type = post.node.type;
+                  if (type === "post") {
+                    return (
+                      <Post
+                        {...post}
+                        boostDiff={getDiff(post.node.transaction)}
+                        key={index}
+                        tx={post.node.transaction}
+                      />
+                    );
+                  } else {
+                    if (type === "branch") {
+                      return (
+                        <BranchedPost {...post} tx={post.node.transaction} />
+                      );
+                    } else {
+                      return (
+                        <QuotedPost {...post} tx={post.node.transaction} />
+                      );
+                    }
+                  }
+                })}
               </div>
             )}
           </div>

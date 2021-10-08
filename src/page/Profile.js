@@ -18,6 +18,8 @@ import LeftPane from "../components/LeftPane";
 import RightPane from "../components/RightPane";
 import Post from "../components/Post";
 import AppBar from "../components/AppBar";
+import BranchedPost from "../components/BranchedPost";
+import QuotedPost from "../components/QuotedPost";
 
 const indexToOrder = {
   0: "CREATED_AT_DESC",
@@ -253,14 +255,29 @@ export default function Profile(props) {
                   </p>
                 }
               >
-                {postList.map((post) => (
-                  <Post
-                    {...post}
-                    boostDiff={getDiff(post.node.transaction)}
-                    key={post.node.transaction}
-                    tx={post.node.transaction}
-                  />
-                ))}
+                {postList.map((post, index) => {
+                  let type = post.node.type;
+                  if (type === "post") {
+                    return (
+                      <Post
+                        {...post}
+                        boostDiff={getDiff(post.node.transaction)}
+                        key={index}
+                        tx={post.node.transaction}
+                      />
+                    );
+                  } else {
+                    if (type === "branch") {
+                      return (
+                        <BranchedPost {...post} tx={post.node.transaction} />
+                      );
+                    } else {
+                      return (
+                        <QuotedPost {...post} tx={post.node.transaction} />
+                      );
+                    }
+                  }
+                })}
               </InfiniteScroll>
             </div>
           ) : (
