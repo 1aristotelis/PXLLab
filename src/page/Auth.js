@@ -415,7 +415,7 @@ export default function Auth(props) {
                   textTransform: "none"
                 }}
               >
-                Sign in witch Twetch
+                Sign in with Twetch
               </Button>
             </div>
             <div
