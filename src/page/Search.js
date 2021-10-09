@@ -54,8 +54,8 @@ export default function Search(props) {
   const containerHeight = height ? height : "100vh";
 
   useEffect(() => {
-    console.log(search.split("=")[1]);
-    console.log(filter, searchTerm);
+    //console.log(search.split("=")[1]);
+    //console.log(filter, searchTerm);
     if (filter === undefined) {
       setFilter("");
       history.push({

@@ -10,6 +10,7 @@ import Timestamp from "../utils/Timestamp";
 import defaultAvatar from "../resources/squareApu.png";
 import Quote from "./Quote";
 import { FetchPostDetail } from "../api/TwetchGraph";
+import MediaGrid from "./MediaGrid";
 
 const Twetch = require("@twetch/sdk");
 
@@ -171,6 +172,9 @@ export default function QuotedPost(props) {
                 >
                   {displayDesc}
                 </Typography>
+              </div>
+              <div>
+                <MediaGrid files={postData.files} />
               </div>
 
               {quoted.node && (

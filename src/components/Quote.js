@@ -9,13 +9,13 @@ import TwetchLogo from "../resources/TwetchLogo";
 import Timestamp from "../utils/Timestamp";
 import defaultAvatar from "../resources/squareApu.png";
 import BranchIcon from "../resources/BranchIcon";
+import MediaGrid from "./MediaGrid";
 
 export default function Quote(props) {
   const postTx = props.tx;
   const branchedById = props.branchedById;
   const branchedByName = props.branchedByName;
   const postData = props.node;
-  console.log(postData);
   const diff = props.boostDiff;
   const history = useHistory();
   const timestamp = new Timestamp(postData.createdAt);
@@ -106,6 +106,9 @@ export default function Quote(props) {
         </div>
         <div style={{ padding: "8px" }}>
           <div style={{ position: "relative" }}>{postData.bContent}</div>
+          <div>
+            <MediaGrid files={postData.files} />
+          </div>
         </div>
       </div>
     );

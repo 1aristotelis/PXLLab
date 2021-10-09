@@ -225,11 +225,19 @@ export default function Jobs(props) {
                   } else {
                     if (type === "branch") {
                       return (
-                        <BranchedPost {...post} tx={post.node.transaction} />
+                        <BranchedPost
+                          {...post}
+                          key={index}
+                          tx={post.node.transaction}
+                        />
                       );
                     } else {
                       return (
-                        <QuotedPost {...post} tx={post.node.transaction} />
+                        <QuotedPost
+                          {...post}
+                          key={index}
+                          tx={post.node.transaction}
+                        />
                       );
                     }
                   }
