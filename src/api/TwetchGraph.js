@@ -143,10 +143,10 @@ export function FetchPosts(filter, order, offset) {
   }`);
 }
 
-export function FetchPXL(filter, order, offset) {
+export function FetchPXL(order, offset) {
   //console.log(filter);
   return twquery(`{
-    allPosts(orderBy: ${order} first: 30 offset: ${offset} filter: {bContent: {includes: "${filter}"}, files: {isNull: false}}) {
+    allPosts(orderBy: ${order} first: 30 offset: ${offset} filter: {userId: {equalTo: "16322"}, files: {isNull: false}, type: {distinctFrom: "branch"}}) {
       totalCount
       edges {
         node {

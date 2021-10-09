@@ -58,7 +58,7 @@ export default function Gallery(props) {
   }, [orderBy, filter]);
 
   const fetchMore = () => {
-    FetchPXL(filter, orderBy, offset).then((res) => {
+    FetchPXL(orderBy, offset).then((res) => {
       //console.log(res);
       setTotalCount(res.allPosts.totalCount);
       let data = res.allPosts.edges;
