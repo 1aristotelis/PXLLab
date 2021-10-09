@@ -185,7 +185,7 @@ export default function Profile(props) {
                     display: "inline-block",
                     overflow: "hidden",
                     fontSize: "16px",
-                    maxWidth: "calc(100% - 64px)",
+                    maxWidth: "100%",
                     fontWeight: "bold",
                     lineHeight: "24px",
                     whiteSpace: "nowrap",
