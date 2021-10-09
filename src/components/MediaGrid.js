@@ -11,7 +11,7 @@ export default function MediaGrid(props) {
       <div
         style={{
           height: "273.938px",
-          width: "487px",
+          width: "100%",
           marginTop: "8px"
         }}
       >
