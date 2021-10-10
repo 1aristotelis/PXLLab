@@ -10,6 +10,7 @@ import Timestamp from "../utils/Timestamp";
 import defaultAvatar from "../resources/squareApu.png";
 import BranchIcon from "../resources/BranchIcon";
 import MediaGrid from "./MediaGrid";
+import PostDescription from "./PostDescription";
 
 export default function Quote(props) {
   const postTx = props.tx;
@@ -105,7 +106,7 @@ export default function Quote(props) {
           </div>
         </div>
         <div style={{ padding: "8px" }}>
-          <div style={{ position: "relative" }}>{postData.bContent}</div>
+          <PostDescription post={postData} />
           <div>
             <MediaGrid files={postData.files} />
           </div>

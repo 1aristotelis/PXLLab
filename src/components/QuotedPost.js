@@ -11,6 +11,7 @@ import defaultAvatar from "../resources/squareApu.png";
 import Quote from "./Quote";
 import { FetchPostDetail } from "../api/TwetchGraph";
 import MediaGrid from "./MediaGrid";
+import PostDescription from "./PostDescription";
 
 const Twetch = require("@twetch/sdk");
 
@@ -159,19 +160,7 @@ export default function QuotedPost(props) {
                 >{`@${postData.userId}`}</Typography>
               </div>
               <div style={{ position: "relative" }}>
-                <Typography
-                  variant="body1"
-                  style={{
-                    fontSize: "1rem",
-                    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-                    fontWeight: 400,
-                    lineHeight: 1.5,
-                    letterSpacing: "0.00938em",
-                    wordWrap: "break-word"
-                  }}
-                >
-                  {displayDesc}
-                </Typography>
+                <PostDescription post={postData} />
               </div>
               <div>
                 <MediaGrid files={postData.files} />

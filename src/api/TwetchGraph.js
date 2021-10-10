@@ -95,6 +95,15 @@ export const userData = `{
     currentUserId
   }
   `;
+export function FetchUserName(id) {
+  return twquery(`
+  {
+    userById(id: "${id}") {
+      name
+    }
+  }
+  `);
+}
 
 export function FetchNotifications(offset) {
   //console.log(filter);

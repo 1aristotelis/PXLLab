@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Avatar, Grid, IconButton, Typography } from "@material-ui/core";
 import LikeIcon from "../resources/LikeIcon";
@@ -10,8 +10,7 @@ import Timestamp from "../utils/Timestamp";
 import defaultAvatar from "../resources/squareApu.png";
 import BranchIcon from "../resources/BranchIcon";
 import MediaGrid from "./MediaGrid";
-
-const Twetch = require("@twetch/sdk");
+import PostDescription from "./PostDescription";
 
 export default function Post(props) {
   const postTx = props.tx;
@@ -188,21 +187,7 @@ export default function Post(props) {
                     }}
                   >{`@${postData.userId}`}</Typography>
                 </div>
-                <div style={{ position: "relative" }}>
-                  <Typography
-                    variant="body1"
-                    style={{
-                      fontSize: "1rem",
-                      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-                      fontWeight: 400,
-                      lineHeight: 1.5,
-                      letterSpacing: "0.00938em",
-                      wordWrap: "break-word"
-                    }}
-                  >
-                    {postData.bContent}
-                  </Typography>
-                </div>
+                <PostDescription post={postData} />
                 <div>
                   <MediaGrid files={postData.files} />
                 </div>
