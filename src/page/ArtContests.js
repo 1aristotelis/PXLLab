@@ -19,6 +19,7 @@ import AppBar from "../components/AppBar";
 import LeftPane from "../components/LeftPane";
 import RightPane from "../components/RightPane";
 import Post from "../components/Post";
+import QuotedPost from "../components/QuotedPost";
 
 const indexToOrder = {
   0: "CREATED_AT_DESC",
@@ -48,15 +49,16 @@ export default function ArtContest(props) {
   const containerHeight = height ? height : "100vh";
 
   //Soon
-  const txActive = "";
+  const txActive =
+    "26340e7257d6b819f161271e88c34215810201bd04be6ff5f1051ac181faad6b";
 
   const txComplete0 =
     "5c695b5b987f0732bea38bf9b09bd2f6d841e565f84ec87b188cd2b46776ead5";
   useEffect(() => {
     setLoading(true);
-    /* FetchPostDetail(txActive).then((data) => {
-      setActiveContest(data.allPosts.edges);
-    }); */
+    FetchPostDetail(txActive).then((data) => {
+      setActiveContest(data.allPosts.edges[0]);
+    });
     FetchPostDetail(txComplete0).then((data) => {
       //console.log(data);
       setCompleteContest0(data.allPosts.edges[0]);
@@ -159,10 +161,9 @@ export default function ArtContest(props) {
               >
                 Active(s)
               </Typography>
-              {/* <Post {...activeContest} tx={txActive} /> */}
-              <Typography variant="h6" style={{ textAlign: "center" }}>
-                Soon™
-              </Typography>
+              {activeContest.node && (
+                <QuotedPost {...activeContest} tx={txActive} />
+              )}
               <Typography
                 variant="body1"
                 style={{

@@ -47,7 +47,10 @@ export default function Profile(props) {
   const height = use100vh();
   const containerHeight = height ? height : "100vh";
 
-  const fetchMore = async () => {
+  const fetchMore = async () => {};
+
+  useEffect(() => {
+    setLoading(true);
     FetchUserPosts(userId, orderBy, offset).then((res) => {
       setTotalCount(res.allPosts.totalCount);
       setPostList(postList.concat(res.allPosts.edges));
@@ -56,15 +59,11 @@ export default function Profile(props) {
       }
       setOffset(offset + 30);
     });
-  };
-
-  useEffect(() => {
-    setLoading(true);
     FetchUserData(userId).then((data) => {
       setUserData(data.userById);
       setLoading(false);
     });
-    fetchMore();
+
     //getBoosts().then((res) => setBoosts(res));
   }, [orderBy, userId]);
 
