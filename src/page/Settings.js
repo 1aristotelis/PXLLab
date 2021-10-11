@@ -105,6 +105,7 @@ export default function Settings(props) {
             <div style={{ flexGrow: 1 }} />
             <Switch
               color="primary"
+              disabled
               style={{
                 float: "right"
               }}
