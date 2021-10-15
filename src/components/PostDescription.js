@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FetchUserName } from "../api/TwetchGraph";
-import { Typography } from "@material-ui/core";
+import { Typography, useTheme } from "@material-ui/core";
 const Twetch = require("@twetch/sdk");
 const twetch = new Twetch();
 const PostHelper = twetch.Helpers.Post;
@@ -9,6 +9,7 @@ const PostHelper = twetch.Helpers.Post;
 const UserName = (props) => {
   const id = props.id;
   const [name, setName] = useState(id);
+  const theme = useTheme();
 
   useEffect(() => {
     FetchUserName(id).then((res) => {
@@ -22,9 +23,11 @@ const UserName = (props) => {
       to={`/u/${id}`}
       onClick={(e) => e.stopPropagation()}
     >
-      <Typography variant="span" color="primary">
+      <span
+        style={{ display: "inline-block", color: theme.palette.primary.main }}
+      >
         @{name}
-      </Typography>
+      </span>
     </Link>
   );
 };
