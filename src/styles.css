@@ -33,6 +33,10 @@ body {
   color: "#E81212";
 }
 
+.Links :hover {
+  text-decoration: underline;
+}
+
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 #connectButton {

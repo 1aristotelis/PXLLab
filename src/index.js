@@ -9,10 +9,14 @@ import App from "./App";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#085AF6"
+      light: "#8b75ff",
+      main: "#5549cd",
+      dark: "#0a209b"
     },
     secondary: {
-      main: "#E81212"
+      light: "#f495ff",
+      main: "#bf64f5",
+      dark: "#8b33c1"
     }
   }
 });

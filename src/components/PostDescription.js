@@ -16,11 +16,16 @@ const UserName = (props) => {
     });
   }, []);
   return (
-    <span style={{}}>
-      <Link to={`/u/${id}`} onClick={(e) => e.stopPropagation()}>
+    <Link
+      className="Links"
+      style={{ textDecoration: "none" }}
+      to={`/u/${id}`}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <Typography variant="span" color="primary">
         @{name}
-      </Link>
-    </span>
+      </Typography>
+    </Link>
   );
 };
 
